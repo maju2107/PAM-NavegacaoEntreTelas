@@ -6,16 +6,17 @@ import DetailsScreen from './src/screens/DetailsScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import LoginScreen  from './src/screens/LoginScreen';
 
+
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Home" options={{headerShown:false}} component={HomeScreen}/> /* tira a setinha de voltar */
+        <Stack.Screen name="Home" options={{headerShown:false}} component={HomeScreen}/> 
         <Stack.Screen name="Details" component={DetailsScreen}/>
         <Stack.Screen name="Profile" component={ProfileScreen}/>
-        <Stack.Screen name="Login" component={LoginScreen}/> /* tira o cabeçalho */
+        <Stack.Screen name="Login" options={{headerShown:false}}  component={LoginScreen}/> 
       </Stack.Navigator>
     </NavigationContainer>
   );

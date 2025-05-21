@@ -21,7 +21,7 @@ export default function HomeScreen({ navigation }) {
             </View>
             <View style={styles.buttonContainer}>
                 <Button
-                    title="Go to Login"
+                    title="Fazer Logout"
                     onPress={() => navigation.navigate('Login')}
                 />
             </View>
