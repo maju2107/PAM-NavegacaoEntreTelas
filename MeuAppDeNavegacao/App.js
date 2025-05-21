@@ -15,7 +15,7 @@ export default function App() {
         <Stack.Screen name="Home" options={{headerShown:false}} component={HomeScreen}/> /* tira a setinha de voltar */
         <Stack.Screen name="Details" component={DetailsScreen}/>
         <Stack.Screen name="Profile" component={ProfileScreen}/>
-        <Stack.Screen name="Login" component={LoginScreen} options={{headerShown:false}}/> /* tira o cabeçalho */
+        <Stack.Screen name="Login" component={LoginScreen}/> /* tira o cabeçalho */
       </Stack.Navigator>
     </NavigationContainer>
   );
