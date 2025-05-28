@@ -12,24 +12,21 @@ const windowHeigth = Dimensions.get('window').height;
 export default function LoginScreen({ navigation }) {
     
     return (
-        <ScrollView style={styles.tudo}>
+        <ScrollView style={styles.all}>
             <View style={styles.container}>
                 <Text style={styles.title}>Login</Text>
+                <TextInput style={styles.input}
+                    placeholder='e-mail:'
+                />
+                <TextInput style={}
+                    placeholder='senha:'
+                />
                 <View style={styles.buttonContainer}>
                     <Button
                         title="Logar"
                         onPress={() => navigation.navigate('Home')}
                     />
                 </View>
-                <TextInput
-                    style={{
-                    height: 40,
-                    borderColor: 'gray',
-                    borderWidth: 1,
-                    }}
-                    defaultValue="You can type in me"
-                />
-
             </View>
         </ScrollView>
         
@@ -38,7 +35,7 @@ export default function LoginScreen({ navigation }) {
 
 const styles = StyleSheet.create({
 
-    tudo :{
+    all :{
         backgroundColor: '#f0f8ff'
     },
     container: {
@@ -57,4 +54,11 @@ const styles = StyleSheet.create({
         width: windowWidth * 0.5, // 50% da largura da tela
         borderRadius: 5,
     },
+
+    input: {
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 3,
+        width: windowWidth * 0.2
+    }
 });
