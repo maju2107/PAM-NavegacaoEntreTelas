@@ -5,30 +5,46 @@
 //Verificar se o usuário digitou o login e a senha corretamente;
 
 import React from 'react';
-import { View, Text, Button, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, Button, StyleSheet, Dimensions, TextInput, ScrollView } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
+const windowHeigth = Dimensions.get('window').height;
 
 export default function LoginScreen({ navigation }) {
     
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Login</Text>
-            <View style={styles.buttonContainer}>
-                <Button
-                    title="Logar"
-                    onPress={() => navigation.navigate('Home')}
+        <ScrollView style={styles.tudo}>
+            <View style={styles.container}>
+                <Text style={styles.title}>Login</Text>
+                <View style={styles.buttonContainer}>
+                    <Button
+                        title="Logar"
+                        onPress={() => navigation.navigate('Home')}
+                    />
+                </View>
+                <TextInput
+                    style={{
+                    height: 40,
+                    borderColor: 'gray',
+                    borderWidth: 1,
+                    }}
+                    defaultValue="You can type in me"
                 />
+
             </View>
-            
-        </View>
+        </ScrollView>
+        
     );
 };
 
 const styles = StyleSheet.create({
+
+    tudo :{
+        backgroundColor: '#f0f8ff'
+    },
     container: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
+        width: windowWidth * 1.0, 
         backgroundColor: '#f0f8ff' // Cor fundo da tela
     },
     title: {
