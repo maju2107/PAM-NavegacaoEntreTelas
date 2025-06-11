@@ -7,22 +7,30 @@
 import React, {useState} from 'react';
 import { View, Text, Button, StyleSheet, Dimensions, TextInput, ScrollView, Alert } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const usuario = { 
-    email: "maria",
-    senha: "1234"
-};
 
 export default function LoginScreen({ navigation }) {
 
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
-
-    const validarLogin = () => {  // fazer a validação do login, comparando senha e email
-        if(email==usuario.email && senha==usuario.senha){
-            navigation.navigate('Home');
-        } else {
-            console.log("Seu login está erradinho!");
+        const [NomeUsuario, setNomeUsuario] = useState('');
+        const [Email, setEmail] = useState('');
+        const [Senha, setSenha] = useState('');
+    
+        const validarLogin = async(NomeUsuarioDigitado,EmailDigitado,SenhaDigitada) => {  // fazer a validação do login
+        try{
+            const usuarioSalvo = await AsyncStorage.getItem('usuario');
+            if(usuarioSalvo){
+                const {NomeUsuario,Email,Senha} = JSON.parse(usuarioSalvo);
+                 if(NomeUsuario == NomeUsuarioDigitado && Email == EmailDigitado && Senha == SenhaDigitada){
+                     console.log("Seu login está certinho!");
+                }else{
+                     console.log("Seu login está erradinho!");
+                }
+            }else{
+                console.log("Nenhum usuário cadastrado");
+            }
+        }catch(error){
+            console.log("Erro ao validar o Login:", error);
         }
     };
     
@@ -31,20 +39,28 @@ export default function LoginScreen({ navigation }) {
             <View style={styles.container}>
                 <Text style={styles.title}>Login</Text>
                 <TextInput style={styles.input}
+                    placeholder='Nome de usuário:'
+                    value={NomeUsuario}
+                    onChangeText={setNomeUsuario}
+                />
+                <TextInput style={styles.input}
                     placeholder='e-mail:'
-                    value={email}
+                    value={Email}
                     onChangeText={setEmail}
                 />
                 <TextInput style={styles.input}
                     placeholder='senha:'
-                    value={senha}
+                    value={Senha}
                     onChangeText={setSenha}
                     secureTextEntry
                 />
                 <View style={styles.buttonContainer}>
                     <Button
                         title="Logar"
-                        onPress={validarLogin}
+                        onPress={async () => {
+                            await validarLogin();
+                            navigation.navigate('Home');
+                        }}
                     />
                 </View>
             </View>

@@ -4,22 +4,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const windowWidth = Dimensions.get('window').width;
 
 export default function CadastroScreen({ navigation }) {
-
-    const [Email, setEmail] = useState('');
+    
     const [NomeUsuario, setNomeUsuario] = useState('');
+    const [Email, setEmail] = useState('');
     const [Senha, setSenha] = useState('');
 
-    // const SalvarCadastro = async() => {
-    //     try {
-    //         await AsyncStorage.setItem("NomeUsuario", NomeUsuario);
-    //         await AsyncStorage.setItem("Senha", Senha);
-    //         await AsyncStorage.setItem("Email", Email);
-    //         console.log("Dados salvos com muito sucesso!");
-    //     } catch (error){
-    //         console.log("O erro é:", error);
-    //     }
+    const salvarCadastro = async() => {
+            try {
+                const usuario = {NomeUsuario,Email,Senha};
+                await AsyncStorage.setItem('usuario', JSON.stringify(usuario));
+                console.log("Dados salvos com muito sucesso!");
+            } catch (error){
+                console.log("Erro ao salvar cadastro do Usuário:", error);
+            }
 
-    // }
+    };
     
     return (
         <ScrollView style={styles.all}>
@@ -29,22 +28,30 @@ export default function CadastroScreen({ navigation }) {
                 <TextInput style={styles.input}
                     placeholder='Nome de usuário:'
                     value={NomeUsuario}
-                    onChangeText={novoNomeUsuario => setNomeUsuario(novoNomeUsuario)}
+                    onChangeText={(text) => setNomeUsuario(text)}
                 />
                 <TextInput style={styles.input}
                     placeholder='e-mail:'
                     value={Email}
-                    onChangeText={novoEmail => setEmail(novoEmail)}
+                    onChangeText={(text) => setEmail(text)}
                 />
                 <TextInput style={styles.input}
                     placeholder='senha:'
                     value={Senha}
-                    onChangeText={novaSenha => setSenha(novaSenha)}
+                    onChangeText={(text) => setSenha(text)}
+                    secureTextEntry
                 />
                 <View style={styles.buttonContainer}>
                     <Button
                         title="Cadastrar"
-                        onPress={navigation.navigate('Login')}
+                        onPress={async () => {
+                            if (!NomeUsuario && !Email && !Senha) {
+                            console.log("Estes campos são obrigatórios");
+                            } else {
+                            await salvarCadastro(NomeUsuario,Email,Senha);
+                            navigation.navigate('Login');
+                            }
+                        }}
                     />
                 </View>
             </View>
