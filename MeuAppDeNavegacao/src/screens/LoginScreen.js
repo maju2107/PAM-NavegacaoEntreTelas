@@ -4,12 +4,27 @@
 //Na tela de Home retirar a opção "Goback" (final do pdf);
 //Verificar se o usuário digitou o login e a senha corretamente;
 
-import React from 'react';
-import { View, Text, Button, StyleSheet, Dimensions, TextInput, ScrollView } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, Button, StyleSheet, Dimensions, TextInput, ScrollView, Alert } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
-const windowHeigth = Dimensions.get('window').height;
+
+const usuario = { 
+    email: "maria",
+    senha: "1234"
+};
 
 export default function LoginScreen({ navigation }) {
+
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+
+    const validarLogin = () => {  // fazer a validação do login, comparando senha e email
+        if(email==usuario.email && senha==usuario.senha){
+            navigation.navigate('Home');
+        } else {
+            console.log("Seu login está erradinho!");
+        }
+    };
     
     return (
         <ScrollView style={styles.all}>
@@ -17,16 +32,19 @@ export default function LoginScreen({ navigation }) {
                 <Text style={styles.title}>Login</Text>
                 <TextInput style={styles.input}
                     placeholder='e-mail:'
+                    value={email}
+                    onChangeText={setEmail}
                 />
                 <TextInput style={styles.input}
                     placeholder='senha:'
-        
+                    value={senha}
+                    onChangeText={setSenha}
+                    secureTextEntry
                 />
                 <View style={styles.buttonContainer}>
                     <Button
                         title="Logar"
-                        testID='true'
-                        onPress={() => navigation.navigate('Home')}
+                        onPress={validarLogin}
                     />
                 </View>
             </View>
