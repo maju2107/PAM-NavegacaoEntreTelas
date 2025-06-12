@@ -45,7 +45,7 @@ export default function CadastroScreen({ navigation }) {
                     <Button
                         title="Cadastrar"
                         onPress={async () => {
-                            if (!NomeUsuario && !Email && !Senha) {
+                            if (!NomeUsuario || !Email || !Senha) {
                             console.log("Estes campos são obrigatórios");
                             } else {
                             await salvarCadastro(NomeUsuario,Email,Senha);

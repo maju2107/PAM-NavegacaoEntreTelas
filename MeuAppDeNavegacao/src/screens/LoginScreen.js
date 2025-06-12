@@ -23,6 +23,7 @@ export default function LoginScreen({ navigation }) {
                 const {NomeUsuario,Email,Senha} = JSON.parse(usuarioSalvo);
                  if(NomeUsuario == NomeUsuarioDigitado && Email == EmailDigitado && Senha == SenhaDigitada){
                      console.log("Seu login está certinho!");
+                     navigation.navigate('Home');
                 }else{
                      console.log("Seu login está erradinho!");
                 }
@@ -58,8 +59,11 @@ export default function LoginScreen({ navigation }) {
                     <Button
                         title="Logar"
                         onPress={async () => {
-                            await validarLogin();
-                            navigation.navigate('Home');
+                            if (!NomeUsuario || !Email || !Senha) {
+                            console.log("Estes campos são obrigatórios");
+                            } else {
+                             validarLogin(NomeUsuario,Email,Senha);
+                            }
                         }}
                     />
                 </View>
