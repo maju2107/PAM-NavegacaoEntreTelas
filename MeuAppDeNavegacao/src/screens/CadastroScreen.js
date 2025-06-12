@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { View, Text, Button, StyleSheet, Dimensions, TextInput, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-const windowWidth = Dimensions.get('window').width;
+import styles from '../../style/style';
 
 export default function CadastroScreen({ navigation }) {
     
@@ -32,12 +32,12 @@ export default function CadastroScreen({ navigation }) {
                     onChangeText={(text) => setNomeUsuario(text)}
                 />
                 <TextInput style={styles.input}
-                    placeholder='e-mail:'
+                    placeholder='E-mail:'
                     value={Email}
                     onChangeText={(text) => setEmail(text)}
                 />
                 <TextInput style={styles.input}
-                    placeholder='senha:'
+                    placeholder='Senha:'
                     value={Senha}
                     onChangeText={(text) => setSenha(text)}
                     secureTextEntry
@@ -60,34 +60,3 @@ export default function CadastroScreen({ navigation }) {
     );
 };
 
-const styles = StyleSheet.create({
-
-    all :{
-        backgroundColor: '#f0f8ff',
-        marginTop: 300
-    },
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        width: windowWidth * 1.0, 
-        backgroundColor: '#f0f8ff' // Cor fundo da tela
-    },
-    title: {
-        fontSize: 24,
-        marginBottom: 20,
-    },
-    buttonContainer: {
-        backgroundColor: '#f0f8ff', // Cor de fundo do container do botão
-        margin: 10,
-        width: windowWidth * 0.5, // 50% da largura da tela
-        borderRadius: 5,
-    },
-
-    input: {
-        borderColor: 'gray',
-        borderWidth: 3,
-        width: windowWidth * 0.7,
-        padding:20,
-        marginBottom: 10
-    }
-});

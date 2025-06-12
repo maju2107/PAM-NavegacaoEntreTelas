@@ -1,8 +1,8 @@
 
 import React, {useState} from 'react';
-import { View, Text, Button, StyleSheet, Dimensions, TextInput, ScrollView, Alert } from 'react-native';
-const windowWidth = Dimensions.get('window').width;
+import { View, Text, Button, TextInput, ScrollView, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import styles from '../../style/style';
 
 
 export default function LoginScreen({ navigation }) {
@@ -40,12 +40,12 @@ export default function LoginScreen({ navigation }) {
                     onChangeText={setNomeUsuario}
                 />
                 <TextInput style={styles.input}
-                    placeholder='e-mail:'
+                    placeholder='E-mail:'
                     value={Email}
                     onChangeText={setEmail}
                 />
                 <TextInput style={styles.input}
-                    placeholder='senha:'
+                    placeholder='Senha:'
                     value={Senha}
                     onChangeText={setSenha}
                     secureTextEntry
@@ -68,34 +68,3 @@ export default function LoginScreen({ navigation }) {
     );
 };
 
-const styles = StyleSheet.create({
-
-    all :{
-        backgroundColor: '#f0f8ff',
-        marginTop: 300
-    },
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        width: windowWidth * 1.0, 
-        backgroundColor: '#f0f8ff' // Cor fundo da tela
-    },
-    title: {
-        fontSize: 24,
-        marginBottom: 20,
-    },
-    buttonContainer: {
-        backgroundColor: '#add8e6', // Cor de fundo do container do botão
-        margin: 10,
-        width: windowWidth * 0.5, // 50% da largura da tela
-        borderRadius: 5,
-    },
-
-    input: {
-        borderColor: 'gray',
-        borderWidth: 3,
-        width: windowWidth * 0.7,
-        padding:20,
-        marginBottom: 10
-    }
-});
