@@ -12,8 +12,9 @@ export default function CadastroScreen({ navigation }) {
     const salvarCadastro = async() => {
             try {
                 const usuario = {NomeUsuario,Email,Senha};
-                await AsyncStorage.setItem('usuario', JSON.stringify(usuario));
+                await AsyncStorage.setItem('usuario', JSON.stringify(usuario)); // nosso querido AsyncStorage salva o objeto usuário criado
                 console.log("Dados salvos com muito sucesso!");
+                navigation.navigate('Login');
             } catch (error){
                 console.log("Erro ao salvar cadastro do Usuário:", error);
             }
@@ -45,11 +46,10 @@ export default function CadastroScreen({ navigation }) {
                     <Button
                         title="Cadastrar"
                         onPress={async () => {
-                            if (!NomeUsuario || !Email || !Senha) {
+                            if (!NomeUsuario || !Email || !Senha) { // só permite que o usuario vá para o Login se ele se cadastrar
                             console.log("Estes campos são obrigatórios");
                             } else {
-                            await salvarCadastro(NomeUsuario,Email,Senha);
-                            navigation.navigate('Login');
+                            await salvarCadastro(NomeUsuario,Email,Senha); // passa os params
                             }
                         }}
                     />

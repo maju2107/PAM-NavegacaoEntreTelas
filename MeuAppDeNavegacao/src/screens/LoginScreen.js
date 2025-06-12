@@ -1,8 +1,3 @@
-// Criar a tela de Login e deixar ela como 1ª tela do App.js;
-//Objetos da tela de login: 2 campos (login/senha) e botão "Entrar";
-//Criar navegação entre as telas: Home, Details e Profile;
-//Na tela de Home retirar a opção "Goback" (final do pdf);
-//Verificar se o usuário digitou o login e a senha corretamente;
 
 import React, {useState} from 'react';
 import { View, Text, Button, StyleSheet, Dimensions, TextInput, ScrollView, Alert } from 'react-native';
@@ -16,19 +11,19 @@ export default function LoginScreen({ navigation }) {
         const [Email, setEmail] = useState('');
         const [Senha, setSenha] = useState('');
     
-        const validarLogin = async(NomeUsuarioDigitado,EmailDigitado,SenhaDigitada) => {  // fazer a validação do login
+        const validarLogin = async(NomeUsuarioDigitado,EmailDigitado,SenhaDigitada) => {  // fazer a validação do login comparando o que ele digitou com o que estava cadastrado
         try{
-            const usuarioSalvo = await AsyncStorage.getItem('usuario');
-            if(usuarioSalvo){
+            const usuarioSalvo = await AsyncStorage.getItem('usuario'); // o AsyncStorage retorno o objeto usuario criado lá no cadastro com a ajuda do JSON
+            if(usuarioSalvo){ // vê se o login do usuario foi salvo
                 const {NomeUsuario,Email,Senha} = JSON.parse(usuarioSalvo);
                  if(NomeUsuario == NomeUsuarioDigitado && Email == EmailDigitado && Senha == SenhaDigitada){
-                     console.log("Seu login está certinho!");
+                     console.log("Seu login está certinho!"); 
                      navigation.navigate('Home');
                 }else{
                      console.log("Seu login está erradinho!");
                 }
             }else{
-                console.log("Nenhum usuário cadastrado");
+                console.log("Nenhum usuário cadastrado"); // tem este console, mas só vai para o login se o usuário se cadastrar, mas tudo bem 
             }
         }catch(error){
             console.log("Erro ao validar o Login:", error);
@@ -59,10 +54,10 @@ export default function LoginScreen({ navigation }) {
                     <Button
                         title="Logar"
                         onPress={async () => {
-                            if (!NomeUsuario || !Email || !Senha) {
+                            if (!NomeUsuario || !Email || !Senha) {  // só permite ir para a ir para A Home se tiver preenchido todos os campos do Login
                             console.log("Estes campos são obrigatórios");
                             } else {
-                             validarLogin(NomeUsuario,Email,Senha);
+                             validarLogin(NomeUsuario,Email,Senha); // teve que passar os params 
                             }
                         }}
                     />
