@@ -1,5 +1,5 @@
 # PAM-NavegacaoEntreTelas
-# Cadastro e Login
+## Cadastro e Login
 
 ## Sobre o projeto 📱
 - Aplicativo para navegar entre telas feito em React Native. 
@@ -24,9 +24,8 @@
 -----------
 ## Como Executar 🖥️
 1. Clone o repositório:
-   ```bash
   https://github.com/maju2107/PAM-NavegacaoEntreTelas.git
-
+  
 2. Entre no diretório do projeto (no terminal):
    - cd PAM-NavegacaoEntreTelas
    - cd MeuAppDeNavegacao
