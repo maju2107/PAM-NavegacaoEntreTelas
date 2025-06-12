@@ -17,7 +17,7 @@
 - **HTML e CSS**   -Usados para estruturação e estilização.
 - **Expo**         -Plataforma para simplificar o desenvolvimento e execução de apps em React Native.
 
-  [![My Skills](https://skillicons.dev/icons?i=vscode,js,npm,css,html,react,nodejsdarkt&theme=light)](https://skillicons.dev)
+  [![My Skills](https://skillicons.dev/icons?i=vscode,js,npm,css,html,react,nodedarkt&theme=light)](https://skillicons.dev)
 
 
 -----------
