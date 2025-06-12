@@ -1,5 +1,4 @@
 # PAM-NavegacaoEntreTelas
-## Cadastro e Login
 
 ## Sobre o projeto 📱
 - Aplicativo para navegar entre telas feito em React Native. 
@@ -24,18 +23,20 @@
 -----------
 ## Como Executar 🖥️
 1. Clone o repositório:
-  https://github.com/maju2107/PAM-NavegacaoEntreTelas.git
+   ```bash
+        https://github.com/maju2107/PAM-NavegacaoEntreTelas.git
+   ```
   
-2. Entre no diretório do projeto (no terminal):
+3. Entre no diretório do projeto (no terminal):
    - cd PAM-NavegacaoEntreTelas
    - cd MeuAppDeNavegacao
 
-3. Certifique-se de ter o Node.js instalado na sua máquina e ter o app Expo GO instalado no seu celular
+4. Certifique-se de ter o Node.js instalado na sua máquina e ter o app Expo GO instalado no seu celular
 
-4. Instale o EXPO CLI (no terminal):
+5. Instale o EXPO CLI (no terminal):
    - npm install -g expo-cli
 
-5. Inicie o projeto (no terminal):
+6. Inicie o projeto (no terminal):
    - npx expo start (ou npx expo start --tunnel caso sua máquina não estiver na mesma rede que o seu celular)
 
-6. Acesse o código QR gerado e utilize a seu Maravilhoso Aplicativo de Navegação Entre Telas!
+7. Acesse o código QR gerado e utilize a seu Maravilhoso Aplicativo de Navegação Entre Telas!
