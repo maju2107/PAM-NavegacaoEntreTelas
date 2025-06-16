@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "MeuAppDeNavegacao",
+    "name": "Seja Bem-Vindo!",
     "slug": "MeuAppDeNavegacao",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,8 +9,8 @@
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "blue"
     },
     "ios": {
       "supportsTablet": true
