@@ -1,8 +1,9 @@
 
-import React, {useState} from 'react';
-import { View, Text, Button, TextInput, ScrollView, Alert } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { View, Text, Button, TextInput, ScrollView,Image, BackHandler} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from '../../style/style';
+import minhaImagem2 from '../../assets/fundo2.png';
 
 
 export default function LoginScreen({ navigation }) {
@@ -29,6 +30,17 @@ export default function LoginScreen({ navigation }) {
             console.log("Erro ao validar o Login:", error);
         }
     };
+
+    useEffect ( () =>{
+            const Bloquear = () => { // essa fução é chamada quando o botão "Voltar" é pressionado (globalmente)
+                console.log("Não pode voltar a tela anterior");
+                return true; // impede a ação de voltar
+            };
+            BackHandler.addEventListener('hardwareBackPress',Bloquear); // backHandler é uma API do React Native que intercepta 
+                                                                        // os eventos do botão "Voltar" da barra de ferramentas
+    
+            return () => BackHandler.removeEventListener('hardwareBackPress',Bloquear); // o .add e o .remove capturam o evento do botão
+        },[] ); 
     
     return (
         <ScrollView style={styles.all}>
@@ -62,6 +74,10 @@ export default function LoginScreen({ navigation }) {
                         }}
                     />
                 </View>
+                <Image
+                    source={minhaImagem2}
+                    style={styles.fundo}
+                />  
             </View>
         </ScrollView>
         

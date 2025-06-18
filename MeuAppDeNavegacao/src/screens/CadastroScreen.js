@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
-import { View, Text, Button, StyleSheet, Dimensions, TextInput, ScrollView } from 'react-native';
+import { View, Text, Button, TextInput, ScrollView, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from '../../style/style';
+import minhaImagem from '../../assets/fundo.png';
+
 
 export default function CadastroScreen({ navigation }) {
     
@@ -54,6 +56,10 @@ export default function CadastroScreen({ navigation }) {
                         }}
                     />
                 </View>
+                <Image
+                    source={minhaImagem}
+                    style={styles.fundo}
+                />                
             </View>
         </ScrollView>
         

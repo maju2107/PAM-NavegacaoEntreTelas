@@ -14,10 +14,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Cadastro">
-        <Stack.Screen name="Home" options={{headerShown:false}} component={HomeScreen}/> 
+        <Stack.Screen name="Home" options={{gestureEnabled: false,headerShown:false, headerLeft:() => null}} component={HomeScreen}/> 
         <Stack.Screen name="Details" component={DetailsScreen}/>
         <Stack.Screen name="Profile" component={ProfileScreen}/>
-        <Stack.Screen name="Login" options={{headerShown:false}} component={LoginScreen}/> 
+        <Stack.Screen name="Login" options={{gestureEnabled: false, headerShown:false,headerLeft:() => null}} component={LoginScreen}/> 
         <Stack.Screen name="Cadastro" options={{headerShown:false}} component={CadastroScreen}/> 
       </Stack.Navigator>
     </NavigationContainer>

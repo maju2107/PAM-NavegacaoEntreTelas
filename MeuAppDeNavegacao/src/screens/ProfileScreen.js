@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, Button,Image } from 'react-native';
 import styles from '../../style/style';
+import minhaImagem4 from '../../assets/fundo4.png';
 
-const windowWidth = Dimensions.get('window').width;
 
 
 export default function DetailsScreen({ navigation }) {
@@ -21,6 +21,10 @@ export default function DetailsScreen({ navigation }) {
                     onPress={() => navigation.navigate('Details')}
                 />
             </View>
+            <Image
+                source={minhaImagem4}
+                style={styles.fundo}
+            />  
         </View>
     );
 }
